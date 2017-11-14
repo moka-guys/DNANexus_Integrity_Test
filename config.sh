@@ -1,0 +1,4 @@
+DX_ENV=/etc/profile.d/dnanexus.environment.sh
+PROJECT=003_DNANexus_Integrity_Check
+WORKFLOW=Workflows/GATK3.5_DNANexus_Integrity_Test
+TRUTH_SET=Truth_Set
