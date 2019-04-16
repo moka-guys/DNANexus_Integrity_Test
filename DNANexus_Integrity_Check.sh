@@ -6,6 +6,8 @@
 # all the expected output files are produced by comparing to a truth set. The script is run regularly from a cron job and issues
 # an alert via syslog/logentries if the test fails.
 
+# Print script version number to logfile
+echo DNANexus_Integrity_Check.sh v1.1
 # set -x so that each command is printed to stdout to help with debugging
 set -x
 # Source the public config file containing environment variables.
