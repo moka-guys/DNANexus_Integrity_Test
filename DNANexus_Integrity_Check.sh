@@ -8,10 +8,10 @@
 
 # set -x so that each command is printed to stdout to help with debugging
 set -x
-# Source the secret config file containing API key.
-# $(dirname $0) returns the path to the directory containing this script.
-source $(dirname $0)/api_key.sh
+# Read DNAnexus API key from file.
+API_KEY=$(<../../.dnanexus_auth_token)
 # Source the public config file containing other environment variables.
+# $(dirname $0) returns the path to the directory containing this script.
 source $(dirname $0)/config.sh
 # Source the DNANexus environment.
 source $DX_ENV
