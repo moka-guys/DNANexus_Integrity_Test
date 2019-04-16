@@ -1,3 +1,5 @@
+# Path to file containing DNAnexus API key 
+API_KEY_PATH=/usr/local/src/mokaguys/.dnanexus_auth_token
 # Path to the dx-toolkit environment
 DX_ENV=/etc/profile.d/dnanexus.environment.sh
 # DNANexus project that should be used for the run
