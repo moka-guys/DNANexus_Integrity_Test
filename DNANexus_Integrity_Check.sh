@@ -7,7 +7,8 @@
 # an alert via syslog/logentries if the test fails.
 
 # Print script version number to logfile
-echo DNANexus_Integrity_Check.sh v1.1
+version=$(git -C $(dirname $0) describe --tags  | awk '{split($0,a,"-"); print a[1]}')
+echo DNANexus_Integrity_Check.sh $version
 # set -x so that each command is printed to stdout to help with debugging
 set -x
 # Source the public config file containing environment variables.
