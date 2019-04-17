@@ -6,6 +6,9 @@
 # all the expected output files are produced by comparing to a truth set. The script is run regularly from a cron job and issues
 # an alert via syslog/logentries if the test fails.
 
+# Print script version number to logfile
+version=$(git -C $(dirname $0) describe --tags  | awk '{split($0,a,"-"); print a[1]}')
+echo DNANexus_Integrity_Check.sh $version
 # set -x so that each command is printed to stdout to help with debugging
 set -x
 # Source the public config file containing environment variables.
