@@ -29,7 +29,7 @@ timestamp=$(date +"%y%m%d_%H%M%S")
 # --dest: Output the data to a timestamped subdirectory of the project.
 # --auth-token: API token.
 dx run ${WORKFLOW} -y --wait --brief --rerun-stage "*" \
---tag ${timestamp} --dest=${PROJECT}:${timestamp} --auth-token ${API_KEY}
+--tag ${timestamp} --dest=${PROJECT}:Run_Output/${timestamp} --auth-token ${API_KEY}
 # Find all analyses matching the timestamp tag. Returns matching analysis IDs (should only be one) separated by spaces.
 all_analyses=$(dx find analyses --brief --project ${PROJECT} --tag ${timestamp} --auth-token ${API_KEY})
 # Capture total number of analyses with matching tag (using word count)
