@@ -28,8 +28,8 @@ timestamp=$(date +"%y%m%d_%H%M%S")
 # --tag: Add timestamp tag; used to identify analysis later.
 # --dest: Output the data to a timestamped subdirectory of the project.
 # --auth-token: API token.
-dx run ${PROJECT}:${WORKFLOW} -y --wait --brief --rerun-stage "*" \
---tag ${timestamp} --dest=${PROJECT}:${timestamp} --auth-token ${API_KEY}
+dx run ${WORKFLOW} -y --wait --brief --rerun-stage "*" \
+--tag ${timestamp} --dest=${PROJECT}:Run_Output/${timestamp} --auth-token ${API_KEY}
 # Find all analyses matching the timestamp tag. Returns matching analysis IDs (should only be one) separated by spaces.
 all_analyses=$(dx find analyses --brief --project ${PROJECT} --tag ${timestamp} --auth-token ${API_KEY})
 # Capture total number of analyses with matching tag (using word count)
@@ -45,7 +45,7 @@ if [[ ${all_analyses_count} = 1 ]]; then
     if [[ ${successful_analyses_count} = 1 ]]; then
         # If job has completed successfully, get sorted list of all output filenames
         # This dx find data command will return a JSON containing information about all files in the specified directory and subdirectories
-        test_files_json=$(dx find data --json --path ${PROJECT}:${timestamp} --auth-token ${API_KEY})
+        test_files_json=$(dx find data --json --path ${PROJECT}:Run_Output/${timestamp} --auth-token ${API_KEY})
         # Use python to retrieve a sorted list of the filenames from the JSON
         test_filenames=$(python -c "print sorted([file['describe']['name'] for file in ${test_files_json}])")
         # Now repeat the above steps to get a sorted list of filenames from the truth set
